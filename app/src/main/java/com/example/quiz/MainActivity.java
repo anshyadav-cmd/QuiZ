@@ -1,7 +1,9 @@
 package com.example.quiz;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView questionTextView;
     private TextView statsTextView;
     private ProgressBar quizPB;
+    private boolean isFirst = true;
 
     private int questionIndex = 0;
 
@@ -69,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void changeQuestion(View buttonView) {
+        if(questionIndex == 0 && !isFirst){
+            alert("Quiz Finished", "Do you want to Quiz again?");
+        }
+        isFirst = false;
         questionIndex = (questionIndex+1) % 10;
         quizPB.incrementProgressBy(progress);
         questionTextView.setText(questionsCollections[questionIndex].getmQuestion());
@@ -77,6 +84,26 @@ public class MainActivity extends AppCompatActivity {
     private void resetButtons(){
         trueBtn.setBackgroundColor(getResources().getColor(R.color.purple_500));
         falseBtn.setBackgroundColor(getResources().getColor(R.color.purple_500));
+    }
+    private void alert(String title, String message){
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
+        .setTitle(title)
+        .setMessage(message)
+        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                quizPB.setProgress(0);
+                isFirst = true;
+            }
+        })
+        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        }).show();
+
+        alertDialog.setCancelable(false);
     }
 
 }
