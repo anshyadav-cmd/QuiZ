@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Quiz</string>
+    <string name="truBTN">True</string>
+    <string name="falBTN">False</string>
+    <string name="que1">Russia has the largest area of any country in the world.T</string>
+    <string name="que2">Fingernails and hair continue to grow after death.F</string>
+    <string name="que3">The Enlightenment was an intellectual movement that celebrated religious faith over reason.F</string>
+    <string name="que4">Carl Lewis holds the record for most individual gold medals at the Olympics.F</string>
+    <string name="que5">The mosquito has caused more human deaths than any other creature in history.T</string>
+    <string name="que6">Corn is the most produced crop in the world.T</string>
+    <string name="que7">The name \"Wall Street\" stems from the row (\"wall\") of banks that greeted visitors to New York City\'s financial district in the 1800s.F</string>
+    <string name="que8">Vincent van Gogh sold only one painting during his lifetime. F</string>
+    <string name="que9">The Academy Awards are annually the most-watched, single telecast in the United States.F</string>
+    <string name="que10">The \"funny bone\" is really a bone.F</string>
 </resources>
