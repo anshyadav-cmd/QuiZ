@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView statsTextView;
     private ProgressBar quizPB;
     private boolean isFirst = true;
+    private int userScore = 0;
 
     private int questionIndex = 0;
 
@@ -46,17 +47,22 @@ public class MainActivity extends AppCompatActivity {
         questionTextView = findViewById(R.id.questionTextView);
         statsTextView = findViewById(R.id.quizStatsTextView);
         quizPB = findViewById(R.id.quizPB);
+        findViewById(R.id.changeButton).setEnabled(false);
 
         questionTextView.setText(questionsCollections[questionIndex].getmQuestion());
+        statsTextView.setText(questionIndex+1+"");
+
 
         trueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(questionsCollections[questionIndex].ismAnswer()){
                     trueBtn.setBackgroundColor(getResources().getColor(R.color.correctAnswer));
+                    userScore++;
                 }else {
                     trueBtn.setBackgroundColor(getResources().getColor(R.color.worngAnswer));
                 }
+                findViewById(R.id.changeButton).setEnabled(true);
             }
         });
 
@@ -65,21 +71,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!questionsCollections[questionIndex].ismAnswer()){
                     falseBtn.setBackgroundColor(getResources().getColor(R.color.correctAnswer));
+                    userScore++;
                 }else {
                     falseBtn.setBackgroundColor(getResources().getColor(R.color.worngAnswer));
                 }
+                findViewById(R.id.changeButton).setEnabled(true);
             }
         });
     }
     public void changeQuestion(View buttonView) {
-        if(questionIndex == 0 && !isFirst){
-            alert("Quiz Finished", "Do you want to Quiz again?");
-        }
-        isFirst = false;
         questionIndex = (questionIndex+1) % 10;
-        quizPB.incrementProgressBy(progress);
-        questionTextView.setText(questionsCollections[questionIndex].getmQuestion());
-        resetButtons();
+        if(questionIndex == 0 && !isFirst){
+            alert("Quiz Finished", "Your Score is: "+userScore+"/"+questionsCollections.length+"\nDo you want to Quiz again?");
+        }else {
+            isFirst = false;
+            statsTextView.setText(questionIndex+1+"");
+            quizPB.incrementProgressBy(progress);
+            questionTextView.setText(questionsCollections[questionIndex].getmQuestion());
+            resetButtons();
+            buttonView.setEnabled(false);
+        }
+
     }
     private void resetButtons(){
         trueBtn.setBackgroundColor(getResources().getColor(R.color.purple_500));
@@ -94,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 quizPB.setProgress(0);
                 isFirst = true;
+                userScore = 0;
+                statsTextView.setText(questionIndex+1+"");
+                questionTextView.setText(questionsCollections[questionIndex].getmQuestion());
+                resetButtons();
             }
         })
         .setNegativeButton("No", new DialogInterface.OnClickListener() {

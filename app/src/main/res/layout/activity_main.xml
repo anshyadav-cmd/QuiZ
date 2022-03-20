@@ -12,14 +12,16 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="18sp" />
 
     <ProgressBar
         android:id="@+id/quizPB"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/quizStatsTextView"
@@ -27,12 +29,13 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.7"
         android:orientation="horizontal">
 
         <Button
@@ -43,7 +46,7 @@
             android:text="@string/truBTN" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/changeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
