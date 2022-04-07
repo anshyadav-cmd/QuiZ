@@ -6,4 +6,4 @@ Local Storage Class for Questions
 ## Output
 
 
-<img src="https://user-images.githubusercontent.com/57345756/162229775-9b82b1ff-0f6c-48e8-8ff0-0a007af80cea.gif" alt="GIF" width="40%" height="40%"/>
+<img src="https://user-images.githubusercontent.com/57345756/162229775-9b82b1ff-0f6c-48e8-8ff0-0a007af80cea.gif" alt="GIF" width="30%"/>
